@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.card {
+  max-width: 340px;
+  max-height: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 50px;
+  cursor: pointer;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper img {
+  max-width: 100%; /* 关键：最大宽度不能超过父容器 */
+  height: auto; /* 关键：高度自动缩放，保持比例，防止压扁 */
+  display: block; /* 建议：消除图片底部的微小缝隙 */
+}
+
+.favorite-button {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 16px;
+  right: 16px;
+  border-radius: 50%;
+  border: transparent;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.favorite-button :hover {
+  transform: scale(1.1);
+}
+
+.favorite-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.color-swatches {
+  display: flex;
+  gap: 10px; /* 按钮之间的距离 */
+  list-style: none; /* 去掉列表前面的黑点 */
+  padding: 0;
+}
+.color-option {
+  /* 1. 尺寸控制 */
+  width: 20px; /* 整体大小 */
+  height: 20px;
+  border-radius: 50%; /* 变成圆形 */
+  cursor: pointer;
+
+  /* 2. 颜色逻辑 (关键！) */
+  border: 1px solid var(--btn-color); /* 【外圈】：使用变量里的颜色 */
+  background-color: var(--btn-color); /* 【内圆】：也是这个颜色 */
+
+  /* 3. 制造空隙 (魔法步骤) */
+  padding: 3px; /* 【空隙】：这里决定了中间白圈有多宽 */
+  background-clip: content-box; /* 【裁剪】：让背景色只在最里面显示，不许碰到 padding */
+
+  /* 4. 交互效果 (可选) */
+  transition: transform 0.2s;
+}
+
+/* 鼠标放上去稍微变大一点，更有交互感 */
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tag-new {
+  font-family: Monda, inter;
+  font-size: 12px;
+  color: #e45151;
+}
+
+.tag-bulk {
+  font-family: Monda, inter;
+  font-size: 12px;
+  color: #6f6f6f;
+}
+.product-name {
+  font-family: Monda, inter;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.product-category {
+  font-family: Monda, inter;
+  font-size: 12px;
+  color: #6f6f6f;
+}
+
+.product-price {
+  font-family: Monda, inter;
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+}

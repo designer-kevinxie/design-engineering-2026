@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Card Component Example" />
+    <title>Card Component</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monda:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <article class="card">
+      <div class="image-wrapper">
+        <img src="jins-glasses.webp" alt="image of NEW CLASSIC No.02" />
+        <button class="favorite-button" aria-label="add to favorites">
+          <img src="heart.svg" alt="SVG image of favorite button" />
+        </button>
+      </div>
+      <ul class="color-swatches">
+        <li class="color-option brown" style="--btn-color: #5e3b33"></li>
+        <li class="color-option black" style="--btn-color: #3e2b26"></li>
+      </ul>
+      <div class="product-info">
+        <div class="tags">
+          <span class="tag-new">NEW</span>
+          <span class="tag-bulk">まとめ買い</span>
+        </div>
+        <h3 class="product-name">NEW CLASSIC NO.02</h3>
+        <p class="product-category">クラシック</p>
+        <p class="product-price">¥19,900</p>
+      </div>
+    </article>
+  </body>
+</html>
