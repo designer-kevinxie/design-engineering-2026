@@ -14,7 +14,7 @@ This repository is organized by weekly sprints, simulating a real-world agile de
 
 | Sprint | Week | Project | Tech Focus | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **S1** | W01 | **JINS Product Card** | Semantic HTML, CSS Box Model | ✅ Done |
+| **S1** | [W01](./week01-02-jins-card/index.md) | **JINS Product Card** | Semantic HTML, CSS Box Model | ✅ Done |
 | **S1** | W02 | **JINS Card (Advanced)** | Flexbox, Responsive, CSS Variables | 🚧 In Progress |
 | **S2** | W03 | *Coming Soon...* | JavaScript DOM | ⏳ Pending |
 
@@ -35,8 +35,7 @@ A pixel-perfect recreation of a product card from the JINS eyewear website.
 - **Accessibility:** Added `aria-label` to icon-only buttons for screen readers.
 
 **📸 Preview:**
-> *(Place a screenshot of your finished card here later)*
-> `![JINS Card Preview](./week01-jins-card/preview.png)`
+> ![JINS Card Preview](./week01-02-jins-card/w1-code-preview.png)
 
 ---
 

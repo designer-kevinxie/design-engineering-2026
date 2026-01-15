@@ -7,15 +7,23 @@
 }
 
 body {
-  font-family: 'Monda', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1;
 }
+
+.product-grid {
+  max-width: 1200px;
+  display: grid;
+  gap: 30px 7px;
+  grid-template-columns: 1fr 1fr;
+  padding: 8px;
+}
+
 .card {
-  max-width: 340px;
-  max-height: 540px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin: 50px;
+
   cursor: pointer;
 }
 
@@ -27,6 +35,12 @@ body {
   max-width: 100%; /* 关键：最大宽度不能超过父容器 */
   height: auto; /* 关键：高度自动缩放，保持比例，防止压扁 */
   display: block; /* 建议：消除图片底部的微小缝隙 */
+  transition: filter 0.3s ease;
+}
+
+.card:hover .image-wrapper img{
+  filter: brightness(95%);
+  
 }
 
 .favorite-button {
@@ -90,31 +104,45 @@ body {
 }
 
 .tag-new {
-  font-family: Monda, inter;
-  font-size: 12px;
+  font-size: 11px;
   color: #e45151;
 }
 
 .tag-bulk {
-  font-family: Monda, inter;
-  font-size: 12px;
+  font-size: 11px;
   color: #6f6f6f;
 }
 .product-name {
-  font-family: Monda, inter;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .product-category {
-  font-family: Monda, inter;
-  font-size: 12px;
+  font-size: 11px;
   color: #6f6f6f;
 }
 
 .product-price {
-  font-family: Monda, inter;
   font-size: 18px;
   color: #000;
   font-weight: bold;
+  font-family: "Monda", sans-serif;
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    margin-inline: auto;
+    gap: 30px 20px;
+  }
+
+  .tag-new,
+  .tag-bulk,
+  .product-category {
+    font-size: 12px;
+  }
+  .product-name {
+    font-size: 16px;
+  }
 }
