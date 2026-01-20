@@ -1,4 +1,4 @@
-### Week 01: JINS Product Card Clone
+### Week 01-02: JINS Product Card Clone
 A pixel-perfect recreation of a product card from the JINS eyewear website.
 
 **🎨 Design (Figma):**
