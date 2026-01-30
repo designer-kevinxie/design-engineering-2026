@@ -161,14 +161,14 @@ body {
   border: 1px solid color-mix(in srgb, var(--btn-color), transparent 0%);
 }
 
-.choosed-color,
-.choosed-lenses {
+.selected-color,
+.selected-lenses {
   display: flex;
   gap: var(--space-xs);
   color: var(--color-text-sub);
 }
-.choosed-color-text,
-.choosed-lenses-text {
+.selected-color-text,
+.selected-lenses-text {
   color: var(--color-text-main);
 }
 

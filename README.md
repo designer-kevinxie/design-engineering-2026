@@ -14,9 +14,9 @@ This repository is organized by weekly sprints, simulating a real-world agile de
 
 | Sprint | Week | Project | Tech Focus | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **S1** | [W01](./week01-02-jins-card) | **JINS Product Card** | Semantic HTML, CSS Box Model | ✅ Done |
-| **S1** | [W02](./week01-02-jins-card) | **JINS Card (Advanced)** | Flexbox, Responsive, CSS Variables | ✅ Done |
-| **S2** | W03 | *Coming Soon...* | JavaScript DOM | ⏳ Pending |
+| **S1** | [W01-02](./week01-02-jins-card) | **JINS Product Card** | Semantic HTML, Flexbox/Grid, CSS Variables | ✅ Done |
+| **S2** | [W03-04](./week03-04-js-dom-manipulation) | **JINS Product Detail Page** | DOM Manipulation, Event Handling, Logic | ✅ Done |
+| **S3** | W05-06 | *Loading...* | Advanced UI Patterns & State | ⏳ Pending |
 
 ---
 

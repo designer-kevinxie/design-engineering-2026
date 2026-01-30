@@ -1,5 +1,12 @@
+
 ////////////////////////choose frame////////////////////
 /////////////////////////////////////////////////////////
+const glassesImages = {
+  "black": "./assets/jins-glasses-black.webp",
+  "brown": "./assets/jins-glasses-brown.webp",
+  "tortoise": "./assets/jins-glasses-tortoise.webp" // 以后加颜色只需要改这里
+};
+
 const colorSwatches = document.querySelectorAll(".color-option");
 colorSwatches.forEach((color) => {
   color.addEventListener("click", (e) => {
@@ -18,17 +25,20 @@ colorSwatches.forEach((color) => {
   });
 });
 
+
+
 //update image and text
 function updateColor(color) {
   const glassesImg = document.querySelector(".glasses-image"); 
-  const colorText = document.querySelector(".choosed-color-text");
-  const popUpFrameText = document.querySelector("#choosed-frame");
+  const colorText = document.querySelector(".selected-color-text");
+  const popUpFrameText = document.querySelector("#selected-frame");
+  
+  glassesImg.src = glassesImages[color];
+  
   if (color == "black") {
-    glassesImg.src = "./assets/jins-glasses-black.webp";
     colorText.innerText = "ブラック";
     popUpFrameText.innerText = "ブラック";
   } else if (color == "brown") {
-    glassesImg.src = "./assets/jins-glasses-brown.webp";
     colorText.innerText = "ブラウン";
     popUpFrameText.innerText = "ブラウン";
   }
@@ -60,7 +70,7 @@ lensesCards.forEach((card) => {
     });
     updateCardStyle(currentCard);
 
-    //update choosed lenses text
+    //update selected lenses text
     const lensesText = currentCard.querySelector("p").innerText;
     updateLensesText(lensesText);
 
@@ -87,8 +97,8 @@ function updateTotalPrice(newPrice) {
 
 //update lenses text
 function updateLensesText(text){
-    const lensesText = document.querySelector(".choosed-lenses-text");
-    const popUpLensesText = document.querySelector("#choosed-lenses");
+    const lensesText = document.querySelector(".selected-lenses-text");
+    const popUpLensesText = document.querySelector("#selected-lenses");
     lensesText.innerText = text;
     popUpLensesText.innerText = text;
 }
