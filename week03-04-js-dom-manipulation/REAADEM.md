@@ -1,5 +1,17 @@
 ### Week 03-04: JS DOM Manipulation
+feat: implement product detail page with dynamic pricing and color switcher
 
+Description: This PR introduces the main interactivity for the JINS product page.
+
+Key Changes:
+
+✨ PDP Layout: Built the structure for the Product Detail Page.
+
+🎨 Color Switcher: Users can now click buttons to toggle frame images.
+
+💰 Lens Calculator: Logic to update the total price based on lens selection (¥0 vs ¥5,500).
+
+📱 Responsive: Adapted layout from mobile to desktop.
 
 **🎨 Design (Figma):**
 - 
@@ -16,7 +28,7 @@
 
 **📸 Preview:**
 W01
-> ![JINS Card Preview](./assets/w1-code-preview.png)
+> ![JINS Card Preview](./assets/w3-w4-preview-sm.jpg)
 W02
-> ![JINS Cards Preview](./assets/w2-code-preview-01.png)
-> ![JINS Cards Preview](./assets/w2-code-preview-02.png)
+> ![JINS Cards Preview](./assets/w3-w4-preview-md.jpg)
+> ![JINS Cards Preview](./assets/w3-w4-preview-lg.jpg)
