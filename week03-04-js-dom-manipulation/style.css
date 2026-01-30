@@ -1,0 +1,330 @@
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-md: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.5rem; /* 24px */
+
+  --color-primary:#e45151;
+  --color-text-main: #232323;
+  --color-text-sub: #6f6f6f;
+  --color-light-gray:#eee;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1;
+  
+  min-height: 110vh;
+  position: relative;
+  color: var(--color-text-main);
+}
+
+.product-purchase {
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-sm) var(--space-sm);
+}
+
+
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.product-tag-new {
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+}
+
+.product-tag-bulk {
+  font-size: var(--text-xs);
+  color: var(--color-text-sub);
+}
+.product-name {
+  font-size: var(--text-md);
+  font-weight: 400;
+}
+
+.product-number-category {
+  display: flex;
+  gap: var(--space-md);
+}
+.product-number,
+.product-category {
+  font-size: var(--text-xs);
+  color: var(--color-text-sub);
+}
+
+.image-wrapper {
+  position: relative;
+  width: auto;
+  height: 320px;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  height: 100%;
+  width: 100%;
+  /* 3. 关键魔法：保持比例填充 */
+  object-fit: cover;
+  /* 4. 可选：调整图片对齐的位置（类似 Figma 的图片焦点控制） */
+  object-position: center;
+  display: block; /* 建议：消除图片底部的微小缝隙 */
+  transition: filter 0.3s ease;
+}
+
+.product-card:hover .image-wrapper img {
+  filter: brightness(95%);
+}
+
+.favorite-button {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  border-radius: 50%;
+  border: transparent;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.favorite-button:hover {
+  transform: scale(1.1);
+}
+
+.icon-heart {
+  /* 初始颜色：灰色或者只有边框 */
+  fill: none; 
+  stroke: #6f6f6f; /* 使用你定义的辅助色 */
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+.favorite-button.active .icon-heart {
+  fill: #e45151;   /* 填充红色 */
+  stroke: #e45151; /* 边框也变红 */
+}
+
+.choose-frame-color {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.color-swatches {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.color-option {
+  width: 30px;
+  height: 30px;
+  background-color: var(--btn-color);
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--btn-color), transparent 85%);
+  background-clip: content-box; /* 【裁剪】：让背景色只在最里面显示，不许碰到 padding */
+  padding: 5px; /* 【空隙】：这里决定了中间白圈有多宽 */
+  transition: trasform 0.2s;
+  cursor: pointer;
+}
+.color-option:hover {
+  transform: scale(1.1);
+}
+.color-active {
+  border: 1px solid color-mix(in srgb, var(--btn-color), transparent 0%);
+}
+
+.choosed-color,
+.choosed-lenses {
+  display: flex;
+  gap: var(--space-xs);
+  color: var(--color-text-sub);
+}
+.choosed-color-text,
+.choosed-lenses-text {
+  color: var(--color-text-main);
+}
+
+.choose-lenses {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.lenses-cards {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.lenses-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-light-gray);
+  min-width: 112px;
+  cursor: pointer;
+}
+
+.lenses-card:hover{
+  border: 1px solid var(--color-text-main);
+}
+
+
+
+.lenses-card img {
+  display: block;
+  width: 44px;
+}
+
+.card-active{
+  border: 1px solid var(--color-text-main);
+}
+
+.lenses-card p,
+.plus-price:first-child {
+  font-size: var(--text-xs);
+}
+.plus-price {
+  display: flex;
+  gap: var(--space-xs);
+}
+.plus-price .price-in-card {
+  font-size: var(--text-md);
+  font-weight: bold;
+  font-family: "Monda", sans-serif;
+}
+
+.product-price {
+  font-size: var(--text-lg);
+  font-weight: bold;
+  font-family: "Monda", sans-serif;
+}
+
+.price-pop-up {
+  padding: 8px 8px 28px 14px;
+  width: 100vw;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: #fff;
+  bottom: 0px;
+  left: 0px;
+  gap: var(--space-md);
+  box-shadow: 0px -5px 10px rgba(225, 225, 225, 0.8);
+  z-index: 1000;
+}
+
+.price-breakdown {
+  font-size: var(--text-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.price-text {
+  display: flex;
+}
+
+.frame-price,.lenses-price{
+ margin-left: auto;
+}
+
+.pop-up-hr {
+  border: none;
+  /* 设置高度 */
+  height: 1px;
+  /* 像设置普通盒子一样设置颜色 */
+  background-color: var(--color-light-gray);
+  color: var(--color-light-gray);
+}
+
+.total-price-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.total-text {
+  font-size: var(--text-md);
+}
+
+.total-price {
+  font-size: var(--text-xl);
+  font-weight: bold;
+  font-family: "Monda", sans-serif;
+}
+
+.purchase-button {
+  font-size: var(--text-sm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #000;
+  padding: 14px 72px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 744px) {
+  .product-card {
+    padding: var(--space-lg);
+  }
+
+  .image-wrapper {
+    height: 510px;
+  }
+
+  .lenses-cards {
+    gap: 60px;
+  }
+
+  .price-pop-up {
+    position: relative;
+    margin-top: 40px;
+    padding: 40px 16px;
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .image-wrapper {
+    height: 728px;
+  }
+}

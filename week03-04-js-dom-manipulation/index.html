@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Card Component Example" />
+    <title>Card Component</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monda:wght@400..700&family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="product-purchase">
+      <article class="product-card">
+        <div class="product-info">
+          <div class="product-tags">
+            <span class="product-tag-new">NEW</span>
+            <span class="product-tag-bulk">まとめ買い</span>
+          </div>
+          <h3 class="product-name">NEW CLASSIC NO.02</h3>
+          <div class="product-number-category">
+            <p class="product-number">UTF-25A-255</p>
+            <p class="product-category">クラシック</p>
+          </div>
+        </div>
+        <div class="image-wrapper">
+          <img
+            class="glasses-image"
+            src="./assets/jins-glasses-brown.webp"
+            alt="image of NEW CLASSIC No.02"
+          />
+          <button class="favorite-button" aria-label="add to favorites">
+            <svg class="icon-heart" viewBox="0 0 24 24" width="21" height="21">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="choose-frame-color">
+          <ul class="color-swatches">
+            <li
+              class="color-option color-active"
+              style="--btn-color: #5e3b33"
+              data-glasses-color="brown"
+            ></li>
+            <li
+              class="color-option"
+              style="--btn-color: #3e2b26"
+              data-glasses-color="black"
+            ></li>
+          </ul>
+          <div class="choosed-color">
+            <span>フレームのカラー：</span>
+            <span class="choosed-color-text">ブラウン</span>
+          </div>
+        </div>
+        <div class="choose-lenses">
+          <div class="lenses-cards">
+            <div class="lenses-card card-active" data-lenses-id="01">
+              <img src="./assets/clear-lens.png" alt="image of a clear lens" />
+              <p>通常クリアレンズ</p>
+              <div class="plus-price">
+                <span>+</span
+                ><span class="price-in-card" data-price="0">¥０</span>
+              </div>
+            </div>
+            <div class="lenses-card" data-lenses-id="02">
+              <img src="./assets/clear-lens.png" alt="image of a clear lens" />
+              <p>JINS SCREEN</p>
+              <div class="plus-price">
+                <span>+</span
+                ><span class="price-in-card" data-price="5500">¥５,500 </span>
+              </div>
+            </div>
+            <div class="lenses-card" data-lenses-id="03">
+              <img src="./assets/clear-lens.png" alt="image of a clear lens" />
+              <p>極薄レンズ</p>
+              <div class="plus-price">
+                <span>+</span
+                ><span class="price-in-card" data-price="11000">¥11,000</span>
+              </div>
+            </div>
+          </div>
+          <div class="choosed-lenses">
+            <span>レンズ：</span>
+            <span class="choosed-lenses-text">通常クリアレンズ</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="price-pop-up">
+        <div class="price-breakdown">
+          <div class="price-text">
+            <span>フレーム：</span> <span id="choosed-frame">ブラウン</span>
+            <span class="frame-price">¥19,900</span>
+          </div>
+          <div class="price-text">
+            <span>レンズ：</span>
+            <span id="choosed-lenses">通常クリアレンズ</span>
+            <span class="lenses-price">¥0</span>
+          </div>
+        </div>
+        <hr class="pop-up-hr" />
+        <div class="total-price-button">
+          <button class="purchase-button">購入する</button>
+          <div class="total-price-block">
+            <p class="total-text">合計（税込）：</p>
+            <p class="total-price">¥19,900</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="script.js"></script>
+</html>
