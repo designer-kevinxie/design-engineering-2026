@@ -23,6 +23,10 @@ Key Changes:
 - `getAttribute`,  `setAttribute`,`removeAttribute`  
 - using const.attribute directtly `div.id`,`div.class`,`div.classList.add()`,`div.classList.remove()`,`classList.toggle("class",true)`
 - `div.dataset.newTest`(`<div data-new-test = "this is a new test"></div>`)
+- `forEach` function
+- `e.currentTarget`
+- currency price formatting tool
+  
 
 
 
