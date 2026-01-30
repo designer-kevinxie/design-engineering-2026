@@ -29,7 +29,7 @@ body {
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1;
   
-  min-height: 110vh;
+  min-height: 120vh;
   position: relative;
   color: var(--color-text-main);
 }
@@ -231,7 +231,7 @@ body {
 
 .price-pop-up {
   padding: 8px 8px 28px 14px;
-  width: 100vw;
+  width: 100%;
   max-width: 1000px;
   display: flex;
   flex-direction: column;
@@ -303,6 +303,9 @@ body {
 }
 
 @media (min-width: 744px) {
+  body{
+    min-height: 100vh;
+  }
   .product-card {
     padding: var(--space-lg);
   }
@@ -317,7 +320,7 @@ body {
 
   .price-pop-up {
     position: relative;
-    margin-top: 40px;
+    margin-top: var(--space-xl);
     padding: 40px 16px;
     box-shadow: none;
   }
