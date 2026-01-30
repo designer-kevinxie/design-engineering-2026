@@ -96,7 +96,7 @@ body {
   transition: filter 0.3s ease;
 }
 
-.product-card:hover .image-wrapper img {
+.image-wrapper img:hover {
   filter: brightness(95%);
 }
 
@@ -176,6 +176,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  margin-top: var(--space-md);
 }
 
 .lenses-cards {
@@ -192,10 +193,16 @@ body {
   border: 1px solid var(--color-light-gray);
   min-width: 112px;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .lenses-card:hover{
   border: 1px solid var(--color-text-main);
+  transform: scale(1.1);
+}
+
+.lenses-card:active{
+  transform: scale(1.0);
 }
 
 
@@ -249,6 +256,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
+  color: var(--color-text-sub);
 }
 
 .price-text {
