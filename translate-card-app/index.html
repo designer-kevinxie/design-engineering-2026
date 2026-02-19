@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的语言卡片</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>📝 随身翻译卡片</h1>
+
+    <div class="input-area">
+        <textarea id="inputText" rows="3" placeholder="输入你想翻译的中文句子..."></textarea>
+        <button class="btn-translate" onclick="mockTranslate()">翻译并制作卡片</button>
+    </div>
+
+    <div id="outputArea"></div>
+
+    <div class="overlay" id="overlay" onclick="closeSheet()"></div>
+    <div class="bottom-sheet" id="bottomSheet">
+        <h2 id="sheetWord" style="margin-top:0;">单词</h2>
+        <p id="sheetReading" style="color: #666; font-size: 14px;">读音</p>
+        <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+        <div id="sheetDefinition" style="line-height: 1.6;">正在查询含义...</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
