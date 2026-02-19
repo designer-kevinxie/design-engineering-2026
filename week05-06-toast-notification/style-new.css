@@ -320,7 +320,7 @@ body {
   align-items: center;
   color: #fff;
   background-color: #000;
-  padding: 14px 72px;
+  padding: 14px 32px;
   border-radius: 30px;
   border: none;
   cursor: pointer;
@@ -419,6 +419,10 @@ body {
     font-size: var(--text-md);
     gap: var(--space-md);
   }
+  .purchase-button{
+padding: 14px 72px;
+  }
+  
 }
 
 @media (min-width: 1440px) {
