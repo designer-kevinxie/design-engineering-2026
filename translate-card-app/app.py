@@ -3,6 +3,7 @@ import sqlite3
 from flask import Flask, render_template, request, jsonify
 from janome.tokenizer import Tokenizer
 from google import genai
+from config import API_KEY
 
 
 # 初始化 Flask 应用
@@ -12,7 +13,6 @@ app = Flask(__name__)
 # 请将此处替换为你的 API Key
 # 建议使用环境变量，但在初学阶段可以直接填入测试
 # 推荐使用 Gemini Flash 或 GPT-4o-mini 以节省成本
-API_KEY = "AIzaSyAK1T3-jwvaHfIdc5b3DjtWaMm1CRhP6RU" 
 # client = OpenAI(api_key=API_KEY, base_url="...") # 如果用Gemini需调整base_url
 client = genai.Client(api_key= API_KEY)
 
