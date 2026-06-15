@@ -1,15 +1,10 @@
-
-
-
-
-
-// Week 01 
-// Week 01 
-// Week 01 
+// Week 01
+// Week 01
+// Week 01
 
 // function ProfileCard({name,role,photo,skills}){
 //     return(
-//         <> 
+//         <>
 //         <h2>{name}</h2>
 //         <p>{role}</p>
 //         <img src={photo} alt={name} />
@@ -19,7 +14,7 @@
 //             ))}
 //         </div>
 //         </>
-      
+
 //     )
 // }
 
@@ -50,9 +45,6 @@
 //     )
 // }
 
-
-
-
 // Week 02 State & Events
 // Week 02 State & Events
 // Week 02 State & Events
@@ -63,7 +55,6 @@
 // function App(){
 //     const [count,setCount] = useState(0)
 //     const [isDark,setDark] = useState(false)
-
 
 //     function handleClickcount(){
 //         setCount(count +1)
@@ -82,8 +73,6 @@
 // }
 // export default App
 
-
-
 // week 03列表渲染 + 表单。
 // week 03列表渲染 + 表单。
 // week 03列表渲染 + 表单。
@@ -96,7 +85,6 @@
 // //useState
 //     const [todo, setTodo] = useState("");
 //     const [list, setList] = useState([]);
-
 
 //  // event handle functions
 // function handleChange(e){
@@ -118,10 +106,8 @@
 //     const newList = list.map((item)=>(item.id ===id ? {...item,finish:!item.finish} : item)
 //     )
 //     setList(newList)
-    
-    
-// }
 
+// }
 
 // ///////UI
 // ///////UI
@@ -133,7 +119,7 @@
 //         <button onClick={handleAdd}>Add</button>
 //         <ul>
 //         {list.map((item)=>( //小括号的作用是"让多行 JSX 自动被 return"
-        
+
 //             <li key={item.id} onClick={()=> handleToggle(item.id)} >
 
 //                 {/* textDecoration 是 CSS 属性的 JSX 写法 */}
@@ -145,7 +131,7 @@
 //                     handleDelete(item.id)
 //                 }}>删除</button>
 //             </li>
-        
+
 //         ))}
 
 //         </ul>
@@ -155,5 +141,62 @@
 
 // export default App
 
+// week 04 useEffect + API
+// week 04 useEffect + API
+// week 04 useEffect + API
+// week 04 useEffect + API
 
+import { useState } from "react";
+import { useEffect } from "react";
 
+function Gallery() {
+  const [photos, setPhotos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // 但 async 函数整体，作为一个函数，调用它时还会再返回一个 Promise——这个是 async 语法自动加的
+    // 包裹一个普通箭头函数,{代码块}返回 undefined,不返回 Promise ✅
+    async function loadPhotos() {
+      try {
+        const res = await fetch(
+          "https://picsum.photos/v2/list?page=1&limit=10",
+        );
+        const data = await res.json();
+        setPhotos(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message); //catch 拿到的 error 是一个 Error 对象，不是字符串。
+      }
+    }
+    loadPhotos(); // 定义完立刻调用
+  }, []);
+
+  if (loading) return <p>加载中...</p>;
+  if (error) return <p>出错了：{error}</p>;
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)", // 3 列等宽
+        gap: "12px", // 图片间距
+      }}
+    >
+      {photos.map((photo) => (
+        <div key={photo.id}>
+          <img
+            src={`https://picsum.photos/id/${photo.id}/300/200`}
+            alt={photo.author}
+            style={{ width: "100%", display: "block", borderRadius: "8px" }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function App() {
+  return <Gallery />;
+}
+
+export default App;
