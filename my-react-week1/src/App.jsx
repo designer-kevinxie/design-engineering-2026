@@ -89,35 +89,71 @@
 // week 03列表渲染 + 表单。
 // week 03列表渲染 + 表单。
 
-import { useState } from "react";
+// import { useState } from "react";
 
-function App(){
+// function App(){
 
-//useState
-    const [todo, setTodo] = useState("");
-    const [list, setList] = useState([]);
+// //useState
+//     const [todo, setTodo] = useState("");
+//     const [list, setList] = useState([]);
 
 
- // event handle functions
-function handleChange(e){
-    setTodo(e.target.value)
-}
+//  // event handle functions
+// function handleChange(e){
+//     setTodo(e.target.value)
+// }
 
-function handleAdd(){
-    const newItem = {id: Date.now(), name: todo, finish: false}
-    setList([...list,newItem])
-    setTodo("")
-}
+// function handleAdd(){
+//     const newItem = {id: Date.now(), name: todo, finish: false}
+//     setList([...list,newItem])
+//     setTodo("")
+// }
 
-    return(
-        <>
-        <input type="text" onChange={handleChange} value={todo} />
-        <button onClick={handleAdd}>Add</button>
-        {list.map((item)=>(
-            <p key={item.id}>{item.name}</p>
-        ))}
-        </>
-    )
-}
+// function handleDelete(id){
+//     const newList = list.filter((item)=> item.id !==id)
+//     setList(newList)
+// }
 
-export default App
+// function handleToggle(id){
+//     const newList = list.map((item)=>(item.id ===id ? {...item,finish:!item.finish} : item)
+//     )
+//     setList(newList)
+    
+    
+// }
+
+
+// ///////UI
+// ///////UI
+// ///////UI
+
+//     return(
+//         <>
+//         <input type="text" onChange={handleChange} value={todo} />
+//         <button onClick={handleAdd}>Add</button>
+//         <ul>
+//         {list.map((item)=>( //小括号的作用是"让多行 JSX 自动被 return"
+        
+//             <li key={item.id} onClick={()=> handleToggle(item.id)} >
+
+//                 {/* textDecoration 是 CSS 属性的 JSX 写法 */}
+//                 <p style={{textDecoration : item.finish ? "line-through" : "none"}}>{item.name}</p>
+
+//                 {/* 传了参数的话会立即执行，所以这边需要一个新的函数包裹带参函数，等待点击执行。 */}
+//                 <button onClick={(e) => {
+//                     e.stopPropagation()//不让它冒泡到 li
+//                     handleDelete(item.id)
+//                 }}>删除</button>
+//             </li>
+        
+//         ))}
+
+//         </ul>
+//         </>
+//     )
+// }
+
+// export default App
+
+
+
