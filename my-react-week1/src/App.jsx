@@ -146,6 +146,65 @@
 // week 04 useEffect + API
 // week 04 useEffect + API
 
+// import { useState } from "react";
+// import { useEffect } from "react";
+
+// function Gallery() {
+//   const [photos, setPhotos] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     // 但 async 函数整体，作为一个函数，调用它时还会再返回一个 Promise——这个是 async 语法自动加的
+//     // 包裹一个普通箭头函数,{代码块}返回 undefined,不返回 Promise ✅
+//     async function loadPhotos() {
+//       try {
+//         const res = await fetch(
+//           "https://picsum.photos/v2/list?page=1&limit=30",
+//         );
+//         const data = await res.json();
+//         setPhotos(data);
+//         setLoading(false);
+//       } catch (error) {
+//         setError(error.message); //catch 拿到的 error 是一个 Error 对象，不是字符串。
+//       }
+//     }
+//     loadPhotos(); // 定义完立刻调用
+//   }, []);
+
+//   if (loading) return <p>加载中...</p>;
+//   if (error) return <p>出错了：{error}</p>;
+//   return (
+//     <div
+//       style={{
+//         display: "grid",
+//         gridTemplateColumns: "repeat(3, 1fr)", // 3 列等宽
+//         gap: "12px", // 图片间距
+//       }}
+//     >
+//       {photos.map((photo) => (
+//         <div key={photo.id}>
+//           <img
+//             src={`https://picsum.photos/id/${photo.id}/300/200`}
+//             alt={photo.author}
+//             style={{ width: "100%", display: "block", borderRadius: "8px" }}
+//           />
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// function App() {
+//   return <Gallery />;
+// }
+
+// export default App;
+
+//week 5 拆分组件、状态提升（lifting state up）、children prop。
+//week 5 拆分组件、状态提升（lifting state up）、children prop。
+//week 5 拆分组件、状态提升（lifting state up）、children prop。
+
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -153,6 +212,7 @@ function Gallery() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     // 但 async 函数整体，作为一个函数，调用它时还会再返回一个 Promise——这个是 async 语法自动加的
@@ -160,7 +220,7 @@ function Gallery() {
     async function loadPhotos() {
       try {
         const res = await fetch(
-          "https://picsum.photos/v2/list?page=1&limit=10",
+          "https://picsum.photos/v2/list?page=1&limit=30",
         );
         const data = await res.json();
         setPhotos(data);
@@ -174,24 +234,45 @@ function Gallery() {
 
   if (loading) return <p>加载中...</p>;
   if (error) return <p>出错了：{error}</p>;
+  //通过query 筛选所搜结果，includes是关键
+  const filteredPhotos = photos.filter((photo) => photo.author.includes(query));
+
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)", // 3 列等宽
-        gap: "12px", // 图片间距
-      }}
-    >
-      {photos.map((photo) => (
-        <div key={photo.id}>
-          <img
-            src={`https://picsum.photos/id/${photo.id}/300/200`}
-            alt={photo.author}
-            style={{ width: "100%", display: "block", borderRadius: "8px" }}
-          />
+    <>
+      <SearchBar query={query} onQueryChange={setQuery} />
+      {filteredPhotos.length === 0 ? (
+        <p>没有找到匹配的照片</p>
+      ) : (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)", // 3 列等宽
+            gap: "12px", // 图片间距
+          }}
+        >
+          {filteredPhotos.map((photo) => (
+            <div key={photo.id}>
+              <img
+                src={`https://picsum.photos/id/${photo.id}/300/200`}
+                alt={photo.author}
+                style={{ width: "100%", display: "block", borderRadius: "8px" }}
+              />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
+  );
+}
+
+function SearchBar({ query, onQueryChange }) {
+  return (
+    <input
+      type="text"
+      placeholder="搜索..."
+      value={query}
+      onChange={(e) => onQueryChange(e.target.value)}
+    />
   );
 }
 
