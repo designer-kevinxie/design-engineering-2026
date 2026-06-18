@@ -205,79 +205,144 @@
 //week 5 拆分组件、状态提升（lifting state up）、children prop。
 //week 5 拆分组件、状态提升（lifting state up）、children prop。
 
+// import { useState } from "react";
+// import { useEffect } from "react";
+
+// function Gallery() {
+//   const [photos, setPhotos] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [query, setQuery] = useState("");
+
+//   useEffect(() => {
+//     // 但 async 函数整体，作为一个函数，调用它时还会再返回一个 Promise——这个是 async 语法自动加的
+//     // 包裹一个普通箭头函数,{代码块}只返回undefined,不返回 Promise ✅
+//     async function loadPhotos() {
+//       try {
+//         const res = await fetch(
+//           "https://picsum.photos/v2/list?page=1&limit=30",
+//         );
+//         const data = await res.json();
+//         setPhotos(data);
+//         setLoading(false);
+//       } catch (error) {
+//         setError(error.message); //catch 拿到的 error 是一个 Error 对象，不是字符串。
+//       }
+//     }
+//     loadPhotos(); // 定义完立刻调用
+//   }, []);
+
+//   if (loading) return <p>加载中...</p>;
+//   if (error) return <p>出错了：{error}</p>;
+//   //通过query 筛选所搜结果，includes是关键
+//   const filteredPhotos = photos.filter((photo) => photo.author.includes(query));
+
+//   return (
+//     <>
+//       <SearchBar query={query} onQueryChange={setQuery} />
+
+//       {filteredPhotos.length === 0 ? (
+//         <p>没有找到匹配的照片</p>
+//       ) : (
+//         <div
+//           style={{
+//             display: "grid",
+//             gridTemplateColumns: "repeat(3, 1fr)", // 3 列等宽
+//             gap: "12px", // 图片间距
+//           }}
+//         >
+//           {filteredPhotos.map((photo) => (
+//             <div key={photo.id}>
+//               <img
+//                 src={`https://picsum.photos/id/${photo.id}/300/200`}
+//                 alt={photo.author}
+//                 style={{ width: "100%", display: "block", borderRadius: "8px" }}
+//               />
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </>
+//   );
+// }
+
+// function SearchBar({ query, onQueryChange }) {
+//   return (
+//     <input
+//       type="text"
+//       placeholder="搜索..."
+//       value={query}
+//       onChange={(e) => onQueryChange(e.target.value)}
+//     />
+//   );
+// }
+
+// function App() {
+//   return <Gallery />;
+// }
+
+// export default App;
+
+//week 6
+//week 6
+//week 6
+
 import { useState } from "react";
-import { useEffect } from "react";
 
-function Gallery() {
-  const [photos, setPhotos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    // 但 async 函数整体，作为一个函数，调用它时还会再返回一个 Promise——这个是 async 语法自动加的
-    // 包裹一个普通箭头函数,{代码块}返回 undefined,不返回 Promise ✅
-    async function loadPhotos() {
-      try {
-        const res = await fetch(
-          "https://picsum.photos/v2/list?page=1&limit=30",
-        );
-        const data = await res.json();
-        setPhotos(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message); //catch 拿到的 error 是一个 Error 对象，不是字符串。
-      }
-    }
-    loadPhotos(); // 定义完立刻调用
-  }, []);
-
-  if (loading) return <p>加载中...</p>;
-  if (error) return <p>出错了：{error}</p>;
-  //通过query 筛选所搜结果，includes是关键
-  const filteredPhotos = photos.filter((photo) => photo.author.includes(query));
-
-  return (
-    <>
-      <SearchBar query={query} onQueryChange={setQuery} />
-      {filteredPhotos.length === 0 ? (
-        <p>没有找到匹配的照片</p>
-      ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)", // 3 列等宽
-            gap: "12px", // 图片间距
-          }}
-        >
-          {filteredPhotos.map((photo) => (
-            <div key={photo.id}>
-              <img
-                src={`https://picsum.photos/id/${photo.id}/300/200`}
-                alt={photo.author}
-                style={{ width: "100%", display: "block", borderRadius: "8px" }}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-    </>
-  );
+function hexToRgb(hex) {
+  hex = hex.replace("#", ""); // remove the "#"
+  const r = parseInt(hex.substring(0, 2), 16); // "C1" → 193, base 16
+  const g = parseInt(hex.substring(2, 4), 16); // "69" → 105
+  const b = parseInt(hex.substring(4, 6), 16); // "52" → 82
+  return { r, g, b };
 }
 
-function SearchBar({ query, onQueryChange }) {
-  return (
-    <input
-      type="text"
-      placeholder="搜索..."
-      value={query}
-      onChange={(e) => onQueryChange(e.target.value)}
-    />
-  );
+function rgbToHsl({ r, g, b }) {
+  // normalize to 0–1
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const delta = max - min; // the spread between brightest & darkest
+
+  // --- Lightness ---
+  let l = (max + min) / 2;
+
+  let h = 0;
+  let s = 0;
+
+  if (delta !== 0) {
+    // delta 0 means gray, keep h=0 s=0
+    // --- Saturation ---
+    s = delta / (1 - Math.abs(2 * l - 1));
+
+    // --- Hue: which channel is the max decides the base angle ---
+    if (max === r) {
+      h = ((g - b) / delta) % 6;
+    } else if (max === g) {
+      h = (b - r) / delta + 2;
+    } else {
+      h = (r - g) / delta + 4;
+    }
+    h = Math.round(h * 60); // convert to degrees
+    if (h < 0) h += 360; // keep it positive
+  }
+
+  // round to clean numbers
+  s = Math.round(s * 100);
+  l = Math.round(l * 100);
+
+  return { h, s, l };
+}
+
+function hexToHsl(hex) {
+  return rgbToHsl(hexToRgb(hex));
 }
 
 function App() {
-  return <Gallery />;
+  console.log(hexToHsl("#808080"));
 }
 
 export default App;
