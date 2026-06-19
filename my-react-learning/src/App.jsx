@@ -341,8 +341,91 @@ function hexToHsl(hex) {
   return rgbToHsl(hexToRgb(hex));
 }
 
+function wrapHue(h) {
+  return ((h % 360) + 360) % 360;
+}
+
+function generatePalette({ h, s, l }) {
+  const background = { h: wrapHue(h), s: 20, l: 95 };
+  const foreground = { h: wrapHue(h), s: 25, l: 15 };
+  const primary = { h: wrapHue(h), s, l };
+  const secondary = { h: wrapHue(h + 30), s: s - 2, l: l + 1 };
+  const accent = { h: wrapHue(h - 150), s: s + 3, l: l - 4 };
+
+  return { background, foreground, primary, secondary, accent };
+}
+
+function hslToCss({ h, s, l }) {
+  return `hsl(${h}, ${s}%, ${l}%)`; // template literal, 拼成 CSS 字符串
+}
+
+function isValidHex(hex) {
+  return /^#[0-9A-Fa-f]{6}$/.test(hex);
+  // ^#        starts with #
+  // [0-9A-Fa-f]  a hex digit (0-9, a-f, A-F)
+  // {6}       exactly 6 of them
+  // $         then end
+}
+
+function ColorPalette() {
+  const [primaryHex, setPrimaryHex] = useState("#C16952");
+  const [hexInput, setHexInput] = useState("#C16952");
+  const palette = generatePalette(hexToHsl(primaryHex));
+  const colorsArray = Object.entries(palette);
+  console.log(colorsArray);
+
+  function handleHexInput(e) {
+    const value = e.target.value;
+    setHexInput(value);
+    if (isValidHex(value)) {
+      setPrimaryHex(value);
+    }
+  }
+
+  function handlePickerChange(e) {
+    const value = e.target.value;
+    setPrimaryHex(value); // 取色器吐出的一定合法,直接提交
+    setHexInput(value); // 同时同步文字框,保持一致
+  }
+
+  return (
+    <>
+      <ColorPicker value={primaryHex} onChange={handlePickerChange} />
+      <ColorInput value={hexInput} onChange={handleHexInput} />
+      <div
+        style={{
+          display: "flex",
+          marginTop: "50px",
+          gap: "20px",
+        }}
+      >
+        {colorsArray.map(([role, color]) => (
+          <div
+            key={role}
+            style={{
+              backgroundColor: hslToCss(color),
+              width: "200px",
+              height: "200px",
+            }}
+          >
+            {role}
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function ColorPicker({ value, onChange }) {
+  return <input type="color" value={value} onChange={onChange} />;
+}
+
+function ColorInput({ value, onChange }) {
+  return <input type="text" value={value} onChange={onChange} />;
+}
+
 function App() {
-  console.log(hexToHsl("#808080"));
+  return <ColorPalette />;
 }
 
 export default App;
