@@ -36,13 +36,34 @@
 // const user = users.find(item.age>30);
 // const user = users.find((item)=>(item.age>30));
 
-const photo = { id: 5, author: "Kevin", url: "..." };
-const colors = ["#FF0000", "#00FF00", "#0000FF"];
+// const photo = { id: 5, author: "Kevin", url: "..." };
+// const colors = ["#FF0000", "#00FF00", "#0000FF"];
 
-const { author } = photo;
-const [, , blue] = colors;
+// const { author } = photo;
+// const [, , blue] = colors;
 
-const palette = { primary: "#C16952", accent: "#3D7A8A" };
+// const palette = { primary: "#C16952", accent: "#3D7A8A" };
 
-const newPalette = { ...palette, background: "#FCF3E3" };
-const newPalette = { ...palette, primary: "#FF0000" };
+// const newPalette = { ...palette, background: "#FCF3E3" };
+// const newPalette = { ...palette, primary: "#FF0000" };
+
+// function greet(name:string, age:number) : string {
+//   return name + " is " + age + " years old";
+// }
+
+// interface Photo {
+//   id:number;
+//   author:string;
+//   url:string;
+// }
+
+// interface ButtonProps {
+//   label : string;
+//   onClick :() => void;
+// }
+
+// function Button({ label, onClick } : ButtonProps) {
+//   return <button onClick={onClick}>{label}</button>;
+// }
+
+// const [selectedUser, setSelectedUser] = useState<User | null>(null);
